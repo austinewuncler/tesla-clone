@@ -1,4 +1,5 @@
 import React from 'react';
+import { Fade } from 'react-awesome-reveal';
 
 import {
   ButtonGroup,
@@ -26,15 +27,19 @@ const Section = ({
   backgroundImage,
 }: SectionProps) => (
   <SectionContainer bgImg={backgroundImage}>
-    <ItemText>
-      <h1>{title}</h1>
-      {description && <p>{description}</p>}
-    </ItemText>
+    <Fade direction="up">
+      <ItemText>
+        <h1>{title}</h1>
+        {description && <p>{description}</p>}
+      </ItemText>
+    </Fade>
     <Buttons>
-      <ButtonGroup>
-        <LeftButton>{leftButtonText}</LeftButton>
-        {rightButtonText && <RightButton>{rightButtonText}</RightButton>}
-      </ButtonGroup>
+      <Fade direction="up">
+        <ButtonGroup>
+          <LeftButton>{leftButtonText}</LeftButton>
+          {rightButtonText && <RightButton>{rightButtonText}</RightButton>}
+        </ButtonGroup>
+      </Fade>
       <DownArrow src="/images/down-arrow.svg" />
     </Buttons>
   </SectionContainer>
