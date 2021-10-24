@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 
+import { useAppSelector } from '../../app/hooks';
+import { selectCars } from '../../features/car/carSlice';
 import {
   BurgerNav,
   CloseIcon,
@@ -12,6 +14,7 @@ import {
 
 const Header = () => {
   const [burgerStatus, setBurgerStatus] = useState(false);
+  const cars = useAppSelector(selectCars);
 
   return (
     <HeaderContainer>
@@ -19,10 +22,12 @@ const Header = () => {
         <img src="/images/logo.svg" alt="logo" />
       </a>
       <Menu>
-        <a href="/">Model S</a>
-        <a href="/">Model X</a>
-        <a href="/">Model 3</a>
-        <a href="/">Model Y</a>
+        {cars &&
+          cars.map((car) => (
+            <a key={car} href="/">
+              {car}
+            </a>
+          ))}
       </Menu>
       <RightMenu>
         <a href="/">Show</a>
@@ -33,6 +38,12 @@ const Header = () => {
         <CloseWrapper>
           <CloseIcon onClick={() => setBurgerStatus(false)} />
         </CloseWrapper>
+        {cars &&
+          cars.map((car) => (
+            <li key={car}>
+              <a href="/">{car}</a>
+            </li>
+          ))}
         <li>
           <a href="/">Existing Inventory</a>
         </li>
