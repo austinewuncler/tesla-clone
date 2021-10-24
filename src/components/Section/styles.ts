@@ -11,6 +11,7 @@ export const SectionContainer = styled.div<{ bgImg: string }>`
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  z-index: 10;
 `;
 
 export const ItemText = styled.div`
