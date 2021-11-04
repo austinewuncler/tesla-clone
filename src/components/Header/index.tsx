@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 import { useAppSelector } from '../../app/hooks';
-import { selectCars } from '../../features/car/carSlice';
+import { selectCars } from '../../features/car/car.slice';
 import {
   BurgerNav,
   CloseIcon,
@@ -23,7 +23,7 @@ const Header = () => {
       </a>
       <Menu>
         {cars &&
-          cars.map((car) => (
+          cars.map((car: string) => (
             <a key={car} href="/">
               {car}
             </a>
@@ -39,7 +39,7 @@ const Header = () => {
           <CloseIcon onClick={() => setBurgerStatus(false)} />
         </CloseWrapper>
         {cars &&
-          cars.map((car) => (
+          cars.map((car: string) => (
             <li key={car}>
               <a href="/">{car}</a>
             </li>
